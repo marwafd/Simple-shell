@@ -203,8 +203,6 @@ int populate_environ_liste(info_t *);
 char **get_environ(info_t *);
 int _unsetenviron(info_t *, char *);
 int _setenviron(info_t *, char *, char *);
-char *_strcpy(char *, char *,int);
-char *_strcat(char *, char *, int);
 
 /* toem_historie.c */
 char *get_historie(info_t *info);

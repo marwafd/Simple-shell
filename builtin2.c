@@ -24,12 +24,12 @@ int alias_unset(info_t *info, char *str)
 	char *p, c;
 	int ret;
 
-	p = _strchr(str, '=');
+	p = _strchar(str, '=');
 	if (!p)
 		return (1);
 	c = *p;
 	*p = 0;
-	ret = delete_node_at_index(&(info->alias),get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
+	ret = delete_node_id(&(info->alias),get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
 	*p = c;
 	return (ret);
 }
@@ -44,14 +44,14 @@ int alias_set(info_t *info, char *str)
 {
 	char *p;
 
-	p = _strchr(str, '=');
+	p = _strchar(str, '=');
 	if (!p)
 		return (1);
 	if (!*++p)
 		return (alias_unset(info, str));
 
 	alias_unset(info, str);
-	return (add_node_end(&(info->alias), str, 0) == NULL);
+	return (add_node_end_ls(&(info->alias), str, 0) == NULL);
 }
 
 /**
@@ -65,7 +65,7 @@ int alias_print(list_t *node)
 
 	if (node)
 	{
-		p = _strchr(node->str, '=');
+		p = _strchar(node->str, '=');
 		for (a = node->str; a <= p; a++)
 		_putchar(*a);
 		_putchar('\'');
@@ -100,7 +100,7 @@ int mimics_alias(info_t *info)
 	}
 	for (i = 1; info->argv[i]; i++)
 	{
-		p = _strchr(info->argv[i], '=');
+		p = _strchar(info->argv[i], '=');
 		if (p)
 		alias_set(info, info->argv[i]);
 		else

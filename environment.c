@@ -8,7 +8,7 @@
  */
 int _myenvironment(info_t *info)
 {
-	print_list_strng(info->env);
+	print_list_string(info->env);
 	return (0);
 }
 
@@ -43,7 +43,7 @@ int _mysetenviron(info_t *info)
 {
 	if (info->argc != 3)
 	{
-		_eputs("Incorrect number of arguement \n");
+		_puts("Incorrect number of arguement \n");
 		return (1);
 	}
 	if (_setenviron(info, info->argv[1], info->argv[2]))

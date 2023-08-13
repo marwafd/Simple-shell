@@ -38,7 +38,7 @@ int _unsetenviron(info_t *info, char *var)
 		p = starts_with(node->str, var);
 		if (p && *p == '=')
 		{
-			info->env_changed = delete_node_at_index(&(info->env), i);
+			info->env_changed = delete_node_id(&(info->env), i);
 			i = 0;
 			node = info->env;
 			continue;
@@ -69,7 +69,7 @@ int _setenviron(info_t *info, char *var, char *value)
 	buf = malloc(_strlen(var) + _strlen(value) + 2);
 	if (!buf)
 		return (1);
-	_strcpy(buf, var);
+	*_strcpy(buf, var);
 	_strcat(buf, "=");
 	_strcat(buf, value);
 	node = info->env;

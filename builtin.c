@@ -51,7 +51,7 @@ int my_cd(info_t *info)
 		else
 			chdir_ret = chdir(dir);
 	}
-	else if (_strcmp(info->argv[1], "-") == 0)
+	else if (str_cmp(info->argv[1], "-") == 0)
 	{
 		if (!_getenviron(info, "OLDPWD="))
 		{

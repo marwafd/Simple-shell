@@ -24,9 +24,9 @@ int chain(info_t *info, char *buf, size_t *p)
 		j++;
 		info->cmd_buf_type = CMD_AND;
 	}
-	else if (buf[j] == ';') /* found end of this command */
+	else if (buf[j] == ';') 
 	{
-		buf[j] = 0; /* replace semicolon with null */
+		buf[j] = 0; 
 		info->cmd_buf_type = CMD_CHAIN;
 	}
 	else
@@ -37,14 +37,14 @@ int chain(info_t *info, char *buf, size_t *p)
 
 /**
  * check_chain - checks we should continue chaining based on last status
- * @info: the parameter struct
+ * @info: the parameter structure
  * @buf: the char buffer
- * @p: address of current position in buf
- * @i: starting position in buf
- * @len: length of buf
- *
+ * @p: address of current position in buffer
+ * @i: starting position in buffer
+ * @len: length of buffer
  * Return: Void
  */
+
 void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 {
 	size_t j = *p;
@@ -71,8 +71,7 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 
 /**
  * replace_alias - replaces an aliases in the tokenized string
- * @info: the parameter struct
- *
+ * @info: the parameter structure
  * Return: 1 if replaced, 0 otherwise
  */
 int replace_alias(info_t *info)
@@ -87,7 +86,7 @@ int replace_alias(info_t *info)
 		if (!node)
 			return (0);
 		free(info->argv[0]);
-		p = _strchr(node->str, '=');
+		p = _strchar(node->str, '=');
 		if (!p)
 			return (0);
 		p = str_dup(p + 1);
@@ -100,8 +99,7 @@ int replace_alias(info_t *info)
 
 /**
  * replace_vars - replaces vars in the tokenized string
- * @info: the parameter struct
- *
+ * @info: the parameter structure
  * Return: 1 if replaced, 0 otherwise
  */
 int replace_vars(info_t *info)
@@ -117,24 +115,23 @@ int replace_vars(info_t *info)
 		if (!str_cmp(info->argv[i], "$?"))
 		{
 			replace_string(&(info->argv[i]),
-				str_dup(convert_number(info->status, 10, 0)));
+				str_dup(convert_nmbr(info->status, 10, 0)));
 			continue;
 		}
 		if (!str_cmp(info->argv[i], "$$"))
 		{
 			replace_string(&(info->argv[i]),
-				str_dup(convert_number(getpid(), 10, 0)));
+				str_dup(convert_nmbr(getpid(), 10, 0)));
 			continue;
 		}
 		node = node_starts_with(info->env, &info->argv[i][1], '=');
 		if (node)
 		{
 			replace_string(&(info->argv[i]),
-				str_dup(_strchr(node->str, '=') + 1));
+				str_dup(_strchar(node->str, '=') + 1));
 			continue;
 		}
 		replace_string(&info->argv[i], str_dup(""));
-
 	}
 	return (0);
 }
@@ -143,7 +140,6 @@ int replace_vars(info_t *info)
  * replace_string - replaces string
  * @old: address of old string
  * @new: new string
- *
  * Return: 1 if replaced, 0 otherwise
  */
 int replace_string(char **old, char *new)

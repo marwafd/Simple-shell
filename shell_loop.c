@@ -18,7 +18,7 @@ int hsh(info_t *info, char **av)
 		if (is_interactive(info))
 			_puts("$ ");
 		_eputcharacter(BUF_FLUSH);
-		r = get_input(info);
+		r = get_line(info);
 		if (r != -1)
 		{
 			set_infos(info, av);
@@ -31,7 +31,7 @@ int hsh(info_t *info, char **av)
 		free_infos(info, 0);
 	}
 	write_historie(info);
-	free_info(info, 1);
+	free_infos(info, 1);
 	if (!is_interactive(info) && info->status)
 		exit(info->status);
 	if (builtin_ret == -2)

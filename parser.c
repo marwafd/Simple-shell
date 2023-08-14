@@ -57,7 +57,7 @@ char *find_path(info_t *info, char *path_str, char *cmd)
 
 	if (!path_str)
 		return (NULL);
-	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
+	if ((str_len(cmd) > 2) && starts_with(cmd, "./"))
 	{
 		if (exct_cmd(info, cmd))
 			return (cmd);

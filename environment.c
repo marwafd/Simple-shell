@@ -73,12 +73,12 @@ int _myunsetenviron(info_t *info)
 }
 
 /**
- * populate_environ_list - populates environ linked list
+ * populate_environ_liste - populates environ linked list
  * @info: Structure containing potential arguments. Used to maintain
  * constant function prototype.
  * Return: Always 0
  */
-int populate_environ_list(info_t *info)
+int populate_environ_liste(info_t *info)
 {
 	list_t *node = NULL;
 	size_t i;

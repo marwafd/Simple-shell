@@ -38,7 +38,8 @@ int main(int ac, char **av)
 
 		}
 		info->readfd = fd;
-	}
+	} 
+
 	populate_environ_liste(info);
 	read_historie(info);
 	hsh(info, av);

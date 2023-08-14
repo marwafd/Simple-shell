@@ -7,11 +7,11 @@
 	* Return: exits with a given exit status
 	* (0) if info.argv[0] != "exit"
 */
-int _myexit(info_t *info)
+int exit-shell(info_t *info)
 {
 	int exitcheck;
 
-	if (info->argv[1]) /* If there is an exit arguement */
+	if (info->argv[1]) 
 	{
 		exitcheck = err_atoi(info->argv[1]);
 		if (exitcheck == -1)

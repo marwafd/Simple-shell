@@ -40,7 +40,7 @@ int main(int ac, char **av)
 		info->readfd = fd;
 	} 
 
-	populate_environ_liste(info);
+	populate_environment_list(info);
 	read_historie(info);
 	hsh(info, av);
 	return (EXIT_SUCCESS);
